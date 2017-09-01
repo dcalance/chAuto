@@ -13,5 +13,14 @@ namespace chAuto
 		{
 			InitializeComponent();
 		}
-	}
+        void OnPracticeClicked(object sender, EventArgs args)
+        {
+            Navigation.PushModalAsync(new Practice());
+        }
+
+        private void OnExamClicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new Exam());
+        }
+    }
 }

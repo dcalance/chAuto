@@ -4,8 +4,11 @@
              xmlns:local="clr-namespace:chAuto"
              x:Class="chAuto.MainPage">
 
-	<Label Text="Welcome to Xamarin Forms!" 
+    <StackLayout Spacing="5" x:Name="layout">
+    <Label Text="Welcome to Xamarin Forms!" 
            VerticalOptions="Center" 
            HorizontalOptions="Center" />
-
+        <Button x:Name="btn1" Text="Practice" Clicked="OnPracticeClicked"></Button>
+        <Button Text="Exam" Clicked="OnExamClicked"></Button>
+    </StackLayout>
 </ContentPage>
