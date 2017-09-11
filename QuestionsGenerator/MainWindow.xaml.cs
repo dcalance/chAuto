@@ -24,7 +24,8 @@ namespace QuestionsGenerator
     public partial class MainWindow : Window
     {
         int currentQuestionBoxes = 1;
-        List<List<Question>> chapters = new List<List<Question>>();
+        List<List<QuestionLib.Question>> chapters = new List<List<QuestionLib.Question>>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -33,7 +34,7 @@ namespace QuestionsGenerator
         }
         private void newChapterBtn_Click(object sender, RoutedEventArgs e)
         {
-            chapters.Add(new List<Question>() { new Question() });
+            chapters.Add(new List<QuestionLib.Question>() { new QuestionLib.Question() });
             updateChapterList();
         }
         private void updateChapterList()
@@ -130,7 +131,7 @@ namespace QuestionsGenerator
         }
         private void newQuestionBtn_Click(object sender, RoutedEventArgs e)
         {
-            chapters[chaptersList.SelectedIndex].Add(new Question());
+            chapters[chaptersList.SelectedIndex].Add(new QuestionLib.Question());
             updateQuestionList();
         }
         private void deleteChapterBtn_Click(object sender, RoutedEventArgs e)
@@ -191,16 +192,16 @@ namespace QuestionsGenerator
         }
         private void Init()
         {
-            chapters.Add(new List<Question>());
+            chapters.Add(new List<QuestionLib.Question>());
             updateChapterList();
 
-            chapters[0].Add(new Question());
+            chapters[0].Add(new QuestionLib.Question());
             updateQuestionList();
         }
 
         private void clearAllBtn_Click(object sender, RoutedEventArgs e)
         {
-            chapters = new List<List<Question>>();
+            chapters = new List<List<QuestionLib.Question>>();
             Init();
             updateFields(); 
         }
@@ -225,13 +226,13 @@ namespace QuestionsGenerator
         }
         private void SwapChapters(int index1, int index2)
         {
-            List<Question> temp = chapters[index1];
+            List<QuestionLib.Question> temp = chapters[index1];
             chapters[index1] = chapters[index2];
             chapters[index2] = temp;
         }
         private void SwapQuestions(int index1, int index2)
         {
-            Question temp = chapters[chaptersList.SelectedIndex][index1];
+            QuestionLib.Question temp = chapters[chaptersList.SelectedIndex][index1];
             chapters[chaptersList.SelectedIndex][index1] = chapters[chaptersList.SelectedIndex][index2];
             chapters[chaptersList.SelectedIndex][index2] = temp;
         }
@@ -312,26 +313,28 @@ namespace QuestionsGenerator
             {
                 // Save document
                 string filename = dlg.FileName;
-                List<Question[]> a = new List<Question[]>();
-                int maxElements = 0;
-                foreach (var item in chapters)
-                {
-                    a.Add(item.ToArray());
-                    if (item.Count > maxElements)
-                    {
-                        maxElements = item.Count;
-                    }
-                }
-                Question[][] final = new Question[chapters.Count][];
-                for (int i = 0; i < a.Count; i++)
-                {
-                    final[i] = a[i];
-                }
+                //List<Chapter> a = new List<Chapter>();
+                //int maxElements = 0;
+                //foreach (var item in chapters)
+                //{
+                //    Chapter chpt = new Chapter() { question = item.ToArray() };
+                //    a.Add(chpt);
+                //    if (item.Count > maxElements)
+                //    {
+                //        maxElements = item.Count;
+                //    }
+                //}
+                //Pack final = new Pack() { chapters = new Chapter[chapters.Count] };
+                ////Question[][] final = new Question[chapters.Count][];
+                //for (int i = 0; i < a.Count; i++)
+                //{
+                //    final.chapters[i] = a[i];
+                //}
 
                 IFormatter formatter = new BinaryFormatter();
                 using (Stream stream = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.None))
                 {
-                    formatter.Serialize(stream, final);
+                    formatter.Serialize(stream, chapters);
                 }
             }
         }

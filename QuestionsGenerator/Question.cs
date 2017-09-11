@@ -9,9 +9,9 @@ namespace QuestionsGenerator
     [Serializable]
     public class Question
     {
-        public string questionText { get; set; }
-        public string imageName { get; set; }
-        public int correctAnswer { get; set; }
-        public string[] answers { get; set; }
+        public string questionText;
+        public string imageName;
+        public int correctAnswer;
+        public string[] answers;
     }
 }
