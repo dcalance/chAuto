@@ -4,7 +4,7 @@
              x:Class="chAuto.Exam">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Exam" />
+            <Label x:Name="textField" Text="Exam" />
             <Button Text="Back" Clicked="Button_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>

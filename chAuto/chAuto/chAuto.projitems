@@ -540,4 +540,9 @@
     <Content Include="$(MSBuildThisFileDirectory)imgAB\3068.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)qstAB\romAB.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)test.bin">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>
