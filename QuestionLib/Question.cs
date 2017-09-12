@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QuestionsGenerator
+namespace QuestionLib
 {
     [Serializable]
     public class Question

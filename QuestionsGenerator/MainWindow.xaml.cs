@@ -1,17 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -303,8 +294,8 @@ namespace QuestionsGenerator
         private void saveAsBtn_Click(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
-            dlg.FileName = "Document"; // Default file name
-            dlg.DefaultExt = ".text"; // Default file extension
+            dlg.FileName = "bin"; // Default file name
+            dlg.DefaultExt = ".bin"; // Default file extension
             dlg.Filter = "Binary File (.bin)|*.bin"; // Filter files by extension
             Nullable<bool> result = dlg.ShowDialog();
 
@@ -313,28 +304,21 @@ namespace QuestionsGenerator
             {
                 // Save document
                 string filename = dlg.FileName;
-                //List<Chapter> a = new List<Chapter>();
-                //int maxElements = 0;
-                //foreach (var item in chapters)
-                //{
-                //    Chapter chpt = new Chapter() { question = item.ToArray() };
-                //    a.Add(chpt);
-                //    if (item.Count > maxElements)
-                //    {
-                //        maxElements = item.Count;
-                //    }
-                //}
-                //Pack final = new Pack() { chapters = new Chapter[chapters.Count] };
-                ////Question[][] final = new Question[chapters.Count][];
-                //for (int i = 0; i < a.Count; i++)
-                //{
-                //    final.chapters[i] = a[i];
-                //}
+                List<QuestionLib.Question[]> a = new List<QuestionLib.Question[]>();
+                foreach (var item in chapters)
+                {
+                    a.Add(item.ToArray());
+                }
+                QuestionLib.Question[][] final = new QuestionLib.Question[chapters.Count][];
+                for (int i = 0; i < a.Count; i++)
+                {
+                    final[i] = a[i];
+                }
 
                 IFormatter formatter = new BinaryFormatter();
                 using (Stream stream = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.None))
                 {
-                    formatter.Serialize(stream, chapters);
+                    formatter.Serialize(stream, final);
                 }
             }
         }
