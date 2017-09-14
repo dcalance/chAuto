@@ -315,11 +315,12 @@ namespace QuestionsGenerator
                     final[i] = a[i];
                 }
 
-                IFormatter formatter = new BinaryFormatter();
+                var formatter = new DataContractSerializer(typeof(QuestionLib.Question[][]));
                 using (Stream stream = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.None))
                 {
-                    formatter.Serialize(stream, final);
+                    formatter.WriteObject(stream, final);
                 }
+
             }
         }
     }
