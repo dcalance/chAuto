@@ -14,9 +14,7 @@
             <TextBox x:Name="imageBox" Height="22" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="155" Width="190"/>
             <Label x:Name="label2" Content="Correct answer number:" Canvas.Left="10" Canvas.Top="182"/>
             <TextBox x:Name="correctAnswerBox" Height="23" TextWrapping="Wrap" Width="190" Canvas.Left="10" Canvas.Top="208"/>
-            <Label x:Name="label3" Content="Answer 1:" Canvas.Left="10" Canvas.Top="264"/>
-            <TextBox x:Name="answerBox1" Height="20" TextWrapping="Wrap" Width="434" Canvas.Left="10" Canvas.Top="290"/>
-            <Button x:Name="addAnswerBtn" Content="Add answer" Width="93" Canvas.Left="253" Canvas.Top="265" Click="addAnswerBtn_Click"/>
+            <Button x:Name="addAnswerBtn" Content="Add answer" Width="93" Canvas.Left="254" Canvas.Top="350" Click="addAnswerBtn_Click"/>
             <ListBox x:Name="chaptersList" Height="227" Width="126" Canvas.Left="447" Canvas.Top="35" SelectionChanged="chaptersList_SelectionChanged"/>
             <Label x:Name="label4" Content="Chapters:" Canvas.Left="447" Canvas.Top="9"/>
             <ListBox x:Name="questionsList" Height="227" Width="126" Canvas.Left="608" Canvas.Top="35" SelectionChanged="questionsList_SelectionChanged"/>
@@ -31,9 +29,17 @@
             <Button x:Name="downChapterBtn" Content="Dw" Width="20" Canvas.Left="578" Canvas.Top="81" Click="downChapterBtn_Click"/>
             <Button x:Name="upQuestionBtn" Content="Up" Width="20" Canvas.Left="739" Canvas.Top="56" Click="upQuestionBtn_Click"/>
             <Button x:Name="downQuestionBtn" Content="Dw" Width="20" Canvas.Left="739" Canvas.Top="81" Click="downQuestionBtn_Click"/>
-            <Button x:Name="removeAnswerBtn" Content="Remove answer" Width="92" Canvas.Left="351" Canvas.Top="265" Click="removeAnswerBtn_Click"/>
-            <StackPanel x:Name="stackPanel" Height="306" Canvas.Left="10" Canvas.Top="315" Width="434"/>
+            <Button x:Name="removeAnswerBtn" Content="Remove answer" Width="92" Canvas.Left="352" Canvas.Top="350" Click="removeAnswerBtn_Click"/>
+            <ScrollViewer Height="246" VerticalScrollBarVisibility="Auto" Canvas.Left="10" Canvas.Top="375" Width="435">
+                <StackPanel x:Name="stackPanel" Canvas.Left="10" Canvas.Top="408" Width="434">
+                    <Label x:Name="label3" Content="Answer 1:" Canvas.Left="11" Canvas.Top="349"/>
+                    <TextBox x:Name="answerBox1" Height="20" TextWrapping="Wrap" Width="434" Canvas.Left="11" Canvas.Top="375"/>
+                </StackPanel>
+            </ScrollViewer>
             <Button x:Name="saveChangesBtn" Content="Save Changes" HorizontalAlignment="Left" VerticalAlignment="Top" Width="107" Canvas.Left="322" Canvas.Top="155" Click="saveChangesBtn_Click"/>
+            <TextBox x:Name="correctAnswerText" Height="48" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="287" Width="435"/>
+            <Label x:Name="label2_Copy" Content="Correct answer text" Canvas.Left="11" Canvas.Top="244"/>
+            <Button x:Name="openBinaryBtn" Content="Open Binary" Canvas.Left="640" Canvas.Top="390" Width="94" Height="20" Click="openBinaryBtn_Click"/>
 
         </Canvas>
 

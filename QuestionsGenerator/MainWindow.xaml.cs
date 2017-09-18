@@ -5,7 +5,8 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.IO;
 using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
+using Microsoft.Win32;
+using System.Windows;
 
 namespace QuestionsGenerator
 {
@@ -63,6 +64,7 @@ namespace QuestionsGenerator
             questionBox.Text = chapters[chaptersList.SelectedIndex][questionsList.SelectedIndex].questionText;
             imageBox.Text = chapters[chaptersList.SelectedIndex][questionsList.SelectedIndex].imageName;
             correctAnswerBox.Text = chapters[chaptersList.SelectedIndex][questionsList.SelectedIndex].correctAnswer.ToString();
+            correctAnswerText.Text = chapters[chaptersList.SelectedIndex][questionsList.SelectedIndex].correctAnswerText;
             if (chapters[chaptersList.SelectedIndex][questionsList.SelectedIndex].answers != null)
             {
                 while (chapters[chaptersList.SelectedIndex][questionsList.SelectedIndex].answers.Length > currentQuestionBoxes)
@@ -93,6 +95,7 @@ namespace QuestionsGenerator
             List<string> answers = new List<string>();
             chapters[selectedChapter][selectedQuestion].questionText = questionBox.Text;
             chapters[selectedChapter][selectedQuestion].imageName = imageBox.Text;
+            chapters[selectedChapter][selectedQuestion].correctAnswerText = correctAnswerText.Text;
             int result;
             int.TryParse(correctAnswerBox.Text, out result);
             chapters[selectedChapter][selectedQuestion].correctAnswer = result;
@@ -320,8 +323,33 @@ namespace QuestionsGenerator
                 {
                     formatter.WriteObject(stream, final);
                 }
-
             }
+        }
+        private void openBinaryBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                var formatter = new DataContractSerializer(typeof(QuestionLib.Question[][]));
+                QuestionLib.Question[][] deserealisedArray;
+                using (Stream stream = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read, FileShare.Read))
+                {
+                    deserealisedArray = (QuestionLib.Question[][])formatter.ReadObject(stream);
+                }
+                chapters = new List<List<QuestionLib.Question>>();
+                foreach (var item in deserealisedArray)
+                {
+                    chapters.Add(new List<QuestionLib.Question>());
+                    foreach (var element in item)
+                    {
+                        chapters[chapters.Count - 1].Add(element);
+                    }
+                }
+                updateChapterList();
+                updateQuestionList();
+                updateFields();
+            }
+                
         }
     }
 }
