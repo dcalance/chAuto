@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using QuestionLib;
+
+
 
 namespace chAuto
 {
@@ -13,5 +16,14 @@ namespace chAuto
 		{
 			InitializeComponent();
 		}
-	}
+        void OnPracticeClicked(object sender, EventArgs args)
+        {
+            Navigation.PushModalAsync(new Practice());
+        }
+
+        private void OnExamClicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new Exam());
+        }
+    }
 }

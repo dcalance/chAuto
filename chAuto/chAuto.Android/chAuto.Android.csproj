@@ -56,6 +56,7 @@
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="Xamarin.Android.Support.Animated.Vector.Drawable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -127,6 +128,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\QuestionLib1\QuestionLib.csproj">
+      <Project>{14bcd064-5028-4897-9e1d-b24389f8585b}</Project>
+      <Name>QuestionLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\chAuto\chAuto.projitems" Label="Shared" Condition="Exists('..\chAuto\chAuto.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
