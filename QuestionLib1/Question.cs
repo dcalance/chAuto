@@ -19,5 +19,7 @@ namespace QuestionLib
         public int correctAnswer;
         [DataMember]
         public string[] answers;
+        [DataMember]
+        public string correctAnswerText;
     }
 }
