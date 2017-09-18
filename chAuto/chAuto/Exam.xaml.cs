@@ -21,13 +21,12 @@ namespace chAuto
 		public Exam()
 		{
 			InitializeComponent ();
-            IFormatter formatter = new BinaryFormatter();
+            var formatter = new DataContractSerializer(typeof(Question[][]));
             Question[][] chapters;
             var assembly = Assembly.GetExecutingAssembly();
             var resourceName = "chAuto.Droid.test.bin";
             Stream stream = assembly.GetManifestResourceStream(resourceName);
-            //Stream stream = new FileStream("test.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
-            chapters = formatter.Deserialize(stream) as Question[][];
+            chapters = (Question[][])formatter.ReadObject(stream);
             stream.Close();
             string finalText = "";
 

@@ -17,6 +17,7 @@ Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		chAuto\chAuto\chAuto.projitems*{049470ae-0e20-44c3-b366-7528a45112fc}*SharedItemsImports = 4
 		chAuto\chAuto\chAuto.projitems*{26b2deb7-04ad-4723-9daf-7f16a1c2707d}*SharedItemsImports = 4
+		chAuto\chAuto\chAuto.projitems*{2c294dbe-9a23-4ac0-9d35-cab0b1eb46e6}*SharedItemsImports = 4
 		chAuto\chAuto\chAuto.projitems*{6e88276e-3f3d-4aa6-b67f-fe678aac479f}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
